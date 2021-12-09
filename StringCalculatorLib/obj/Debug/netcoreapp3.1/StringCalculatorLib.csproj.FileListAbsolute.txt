@@ -1,0 +1,8 @@
+E:\Utthunga-clean-code\StringCalculatorLib\StringCalculatorLib\bin\Debug\netcoreapp3.1\StringCalculatorLib.deps.json
+E:\Utthunga-clean-code\StringCalculatorLib\StringCalculatorLib\bin\Debug\netcoreapp3.1\StringCalculatorLib.dll
+E:\Utthunga-clean-code\StringCalculatorLib\StringCalculatorLib\bin\Debug\netcoreapp3.1\StringCalculatorLib.pdb
+E:\Utthunga-clean-code\StringCalculatorLib\StringCalculatorLib\obj\Debug\netcoreapp3.1\StringCalculatorLib.AssemblyInfoInputs.cache
+E:\Utthunga-clean-code\StringCalculatorLib\StringCalculatorLib\obj\Debug\netcoreapp3.1\StringCalculatorLib.AssemblyInfo.cs
+E:\Utthunga-clean-code\StringCalculatorLib\StringCalculatorLib\obj\Debug\netcoreapp3.1\StringCalculatorLib.csproj.CoreCompileInputs.cache
+E:\Utthunga-clean-code\StringCalculatorLib\StringCalculatorLib\obj\Debug\netcoreapp3.1\StringCalculatorLib.dll
+E:\Utthunga-clean-code\StringCalculatorLib\StringCalculatorLib\obj\Debug\netcoreapp3.1\StringCalculatorLib.pdb
