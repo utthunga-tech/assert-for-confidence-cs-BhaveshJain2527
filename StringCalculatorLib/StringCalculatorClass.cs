@@ -9,6 +9,7 @@ namespace StringCalculatorLib
         #region Properties
         private List<string> _delimiters = new List<string> { ",", "\n" };
         private const int maxLimit = 1000;
+        private string backslashDelimiter = "//";
         #endregion
 
         #region Methods
@@ -16,16 +17,29 @@ namespace StringCalculatorLib
         {
             if(string.IsNullOrEmpty(numbers)) return 0;
             var numberList = numbers.Split(_delimiters.ToArray(), StringSplitOptions.None).Select(int.Parse).ToList();
-            bool IsNegativeExists = IsNegativeNumberExists(numberList);
-            return IsNegativeExists ? 0 : numberList.Where(x => x <= maxLimit).Sum();
+            string negativeNumber = CheckForNegativeNumber(numberList);
+
+            if(string.IsNullOrEmpty(negativeNumber))
+            {
+                return numberList.Where(x => x <= maxLimit).Sum();
+            }
+            else
+            {
+                ThrowException("Negatives number are not allowed - " + negativeNumber);
+                return 0;
+            }
         }
 
-        public bool IsNegativeNumberExists(List<int> numberList)
+        private void ThrowException(string errMessage)
         {
-            if (!numberList.Any(x => x < 0)) return false;
+            throw new Exception(errMessage);
+        }
+
+        public string CheckForNegativeNumber(List<int> numberList)
+        {
+            if (!numberList.Any(x => x < 0)) return string.Empty;
             var negativeNumbers = string.Join(",", numberList.Where(x => x < 0).Select(x => x.ToString()).ToArray());
-            Console.WriteLine("Negatives number are not allowed - " +negativeNumbers);
-            return true;
+            return negativeNumbers;
         }
 
         #endregion
