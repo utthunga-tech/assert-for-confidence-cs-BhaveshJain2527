@@ -75,5 +75,12 @@ namespace StringCalculatorLib.Tests
             string inputParameter = "1,1002,1";
             Assert.Equal(2, _codeUnderTest.Add(inputParameter));
         }
+
+        [Fact]
+        public void GivenStringWithBackSlashWhenInvokeAddThenSumOfNumberIsExpectedExcludingBackslash()
+        {
+            string inputParameter = "//;\n1;2";
+            Assert.Equal(3, _codeUnderTest.Add(inputParameter));
+        }
     }
 }
