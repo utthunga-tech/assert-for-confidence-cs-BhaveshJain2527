@@ -16,6 +16,12 @@ namespace StringCalculatorLib
         public int Add(string numbers)
         {
             if(string.IsNullOrEmpty(numbers)) return 0;
+
+            if (numbers.StartsWith(backslashDelimiter))
+            {
+                numbers = GetNumbersExcludingBackslashAndOtherDelimiters(numbers);
+            }
+
             var numberList = numbers.Split(_delimiters.ToArray(), StringSplitOptions.None).Select(int.Parse).ToList();
             string negativeNumber = CheckForNegativeNumber(numberList);
 
@@ -28,6 +34,32 @@ namespace StringCalculatorLib
                 ThrowException("Negatives number are not allowed - " + negativeNumber);
                 return 0;
             }
+        }
+
+        private string GetNumbersExcludingBackslashAndOtherDelimiters(string numberList)
+        {
+            string numbers = string.Empty;
+
+            var otherdelimiters = GetOtherDelimiters(numberList);
+            _delimiters.AddRange(otherdelimiters);
+
+            int multipleDelimiterLength = otherdelimiters.Count > 1 ? (otherdelimiters.Count * 2) : 0;
+
+            int startIndexAfterBackslash = 3;
+            int startIndexOfString = startIndexAfterBackslash + otherdelimiters.Sum(x => x.Length) + multipleDelimiterLength;
+
+            numbers = numberList.Substring(startIndexOfString);
+
+            return numbers;
+        }
+
+        private List<string> GetOtherDelimiters(string numbers)
+        {
+            int EndIndexOfBackslash = 2;
+            var delimitersAfterBackslash = numbers.Substring(EndIndexOfBackslash, numbers.IndexOf('\n') - EndIndexOfBackslash);
+
+            List<string> otherdelimiters = delimitersAfterBackslash.Split('[').Select(x => x.TrimEnd(']')).ToList();
+            return otherdelimiters;
         }
 
         private void ThrowException(string errMessage)
