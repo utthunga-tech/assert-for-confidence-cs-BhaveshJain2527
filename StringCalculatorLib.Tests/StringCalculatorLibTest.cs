@@ -82,5 +82,19 @@ namespace StringCalculatorLib.Tests
             string inputParameter = "//;\n1;2";
             Assert.Equal(3, _codeUnderTest.Add(inputParameter));
         }
+        
+        [Fact]
+        public void GivenStringWithMultiDelimeterWhenInvokeAddThenSumOfNumberIsExpected_Case1()
+        {
+            string inputParameter = "//[*][%]\n1*2%3";
+            Assert.Equal(6, _codeUnderTest.Add(inputParameter));
+        }
+
+        [Fact]
+        public void GivenStringWithMultiDelimeterWhenInvokeAddThenSumOfNumberIsExpected_Case2()
+        {
+            string inputParameter = "//[][%%]\n1,2%%3";
+            Assert.Equal(6, _codeUnderTest.Add(inputParameter));
+        }
     }
 }
