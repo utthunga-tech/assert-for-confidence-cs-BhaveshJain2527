@@ -59,6 +59,12 @@ namespace StringCalculatorLib
             var delimitersAfterBackslash = numbers.Substring(EndIndexOfBackslash, numbers.IndexOf('\n') - EndIndexOfBackslash);
 
             List<string> otherdelimiters = delimitersAfterBackslash.Split('[').Select(x => x.TrimEnd(']')).ToList();
+
+            if (otherdelimiters.Contains(string.Empty))
+            {
+                otherdelimiters.Remove(string.Empty);
+            }
+
             return otherdelimiters;
         }
 
